@@ -67,8 +67,6 @@ public class HeartPersonListPresenter implements HeartPersonListContract.Present
                 e.printStackTrace();
             }
 
-
-
             InputStream inputStream = mResourceManager.getResources().openRawResource(R.raw.data_heart_person);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
 
