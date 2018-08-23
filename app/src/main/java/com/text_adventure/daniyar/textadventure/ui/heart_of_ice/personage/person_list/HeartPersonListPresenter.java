@@ -1,7 +1,9 @@
 package com.text_adventure.daniyar.textadventure.ui.heart_of_ice.personage.person_list;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.AdapterView;
 
 import com.text_adventure.daniyar.textadventure.R;
 import com.text_adventure.daniyar.textadventure.data.entity.HeartIntroModel;
@@ -9,6 +11,8 @@ import com.text_adventure.daniyar.textadventure.data.entity.HeartPersonEquipment
 import com.text_adventure.daniyar.textadventure.data.entity.HeartPersonModel;
 import com.text_adventure.daniyar.textadventure.data.entity.HeartPersonSkillModel;
 import com.text_adventure.daniyar.textadventure.data.manager.ResourceManager;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.personage.person_details.HeartPersonDetailsDialogFragment;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.personage.person_details.HeartPersonDetailsDialogPresenter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -59,7 +63,6 @@ public class HeartPersonListPresenter implements HeartPersonListContract.Present
                     heartPersonEquipmentModels.add(heartPersonEquipmentModel);
                     heartPersonSkillModel.setEquipments(heartPersonEquipmentModels);
                     mHeartPersonSkillModels.add(heartPersonSkillModel);
-
                 }
                 Log.d("DATAPERSON", "Just created: " + mHeartPersonSkillModels);
             } catch (IOException e){
@@ -152,6 +155,17 @@ public class HeartPersonListPresenter implements HeartPersonListContract.Present
     public void refreshList() {
         if(mRealm.where(HeartPersonModel.class).findAll().size() != 0 && isViewAttached()){
             mView.refreshAdapter();
+        }
+    }
+
+    @Override
+    public void onListViewItemClicked(AdapterView<?> adapterView, int position) {
+
+        HeartPersonModel heartPersonModel = (HeartPersonModel) adapterView.getItemAtPosition(position);
+        Bundle bundle = new Bundle();
+        bundle.putString("person", heartPersonModel.getName());
+        if(isViewAttached()){
+            mView.showDetails(bundle);
         }
     }
 

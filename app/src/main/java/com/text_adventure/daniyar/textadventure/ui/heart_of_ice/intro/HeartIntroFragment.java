@@ -64,6 +64,10 @@ public class HeartIntroFragment extends BaseFragment implements HeartIntroContra
     @Override
     public void onButtonClick(HeartIntroModel heartIntroModel) {
 
+        if(heartIntroModel.getDescription().equals("Выбрать персонажа")){
+            choosePerson();
+        }
+
         mPresenter.blockButtons(heartIntroModel);
         mPresenter.handlerLooping(mPresenter.getStoryModels(heartIntroModel.getId()), false);
     }
@@ -93,6 +97,18 @@ public class HeartIntroFragment extends BaseFragment implements HeartIntroContra
     }
 
     @Override
+    public void onClick(View view) {
+        choosePerson();
+    }
+
+    private void choosePerson(){
+        startActivity(new Intent(getActivity(), HeartChoosePersonActivity.class));
+        if(getActivity() != null){
+            getActivity().finish();
+        }
+    }
+
+    @Override
     public void notifyDataAdapter() {
         mAdapter.notifyDataSetChanged();
     }
@@ -102,10 +118,5 @@ public class HeartIntroFragment extends BaseFragment implements HeartIntroContra
         super.onDestroy();
         mPresenter.closeRealm();
         mPresenter.unbind();
-    }
-
-    @Override
-    public void onClick(View view) {
-        startActivity(new Intent(getActivity(), HeartChoosePersonActivity.class));
     }
 }

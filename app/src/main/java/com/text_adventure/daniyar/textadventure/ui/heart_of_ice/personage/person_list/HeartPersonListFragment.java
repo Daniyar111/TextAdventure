@@ -6,22 +6,25 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.text_adventure.daniyar.textadventure.R;
 import com.text_adventure.daniyar.textadventure.data.manager.ResourceManager;
 import com.text_adventure.daniyar.textadventure.ui.BaseFragment;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.personage.person_details.HeartPersonDetailsDialogFragment;
 
 import io.realm.Realm;
 
-public class HeartPersonListFragment extends BaseFragment implements HeartPersonListContract.View{
+public class HeartPersonListFragment extends BaseFragment implements HeartPersonListContract.View, AdapterView.OnItemClickListener {
 
     private HeartPersonListPresenter mPresenter;
     private Context mContext;
     private ListView mListViewPerson;
     private HeartPersonListAdapter mAdapter;
     private Button mButtonCreate;
+    private HeartPersonDetailsDialogFragment mDetailsDialogFragment;
 
     @Override
     protected int getViewLayout() {
@@ -56,6 +59,23 @@ public class HeartPersonListFragment extends BaseFragment implements HeartPerson
         mListViewPerson.setAdapter(mAdapter);
         mListViewPerson.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(mListViewPerson.getContext(), R.anim.layout_slide_up));
         mListViewPerson.scheduleLayoutAnimation();
+        mListViewPerson.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void showDetails(Bundle bundle) {
+
+        mDetailsDialogFragment = new HeartPersonDetailsDialogFragment();
+        if(getActivity() != null){
+            mDetailsDialogFragment.setArguments(bundle);
+            mDetailsDialogFragment.show(getActivity().getSupportFragmentManager(), "person");
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        mPresenter.onListViewItemClicked(adapterView, i);
     }
 
     @Override

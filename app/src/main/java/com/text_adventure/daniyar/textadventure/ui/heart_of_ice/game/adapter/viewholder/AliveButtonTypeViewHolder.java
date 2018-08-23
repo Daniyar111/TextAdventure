@@ -1,34 +1,33 @@
-package com.text_adventure.daniyar.textadventure.ui.museum.adapter.viewholder;
+package com.text_adventure.daniyar.textadventure.ui.heart_of_ice.game.adapter.viewholder;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.text_adventure.daniyar.textadventure.R;
-import com.text_adventure.daniyar.textadventure.data.entity.MuseumStoryModel;
+import com.text_adventure.daniyar.textadventure.data.entity.HeartStoryModel;
 import com.text_adventure.daniyar.textadventure.data.manager.ResourceManager;
-import com.text_adventure.daniyar.textadventure.ui.museum.adapter.BaseViewHolder;
-import com.text_adventure.daniyar.textadventure.ui.museum.adapter.OnMuseumChoiceClick;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.game.adapter.BaseViewHolder;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.game.adapter.OnHeartGameChoiceClick;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import io.realm.RealmResults;
 
-public class ChoiceTypeViewHolder extends BaseViewHolder{
+public class AliveButtonTypeViewHolder extends BaseViewHolder {
 
     private FrameLayout mButtonChoice;
     private ImageView mImageView;
     private TextView mTextViewDescription;
-    private OnMuseumChoiceClick mChoiceClick;
+    private OnHeartGameChoiceClick mChoiceClick;
     private ResourceManager mResourceManager;
     private Set<Integer> mChosenSet = new HashSet<>();
 
-    public ChoiceTypeViewHolder(View itemView, OnMuseumChoiceClick choiceClick, ResourceManager resourceManager) {
+    public AliveButtonTypeViewHolder(View itemView, OnHeartGameChoiceClick choiceClick, ResourceManager resourceManager) {
         super(itemView);
+
         mButtonChoice = itemView.findViewById(R.id.buttonChoice);
         mImageView = itemView.findViewById(R.id.imageView);
         mTextViewDescription = itemView.findViewById(R.id.textViewDescription);
@@ -37,14 +36,14 @@ public class ChoiceTypeViewHolder extends BaseViewHolder{
     }
 
     @Override
-    protected void onBindView(final RealmResults<MuseumStoryModel> museumStoryModels, final int position) {
-        mTextViewDescription.setText(museumStoryModels.get(position).getDescription());
+    protected void onBindView(final RealmResults<HeartStoryModel> heartStoryModels, final int position) {
+        mTextViewDescription.setText(heartStoryModels.get(position).getDescription());
 
         mButtonChoice.setOnFocusChangeListener(null);
 
         mImageView.setImageResource(mChosenSet.contains(position) ? R.drawable.button_nohover : R.drawable.button_hover);
 
-        if(museumStoryModels.get(position).getIsChosen()){
+        if(heartStoryModels.get(position).getIsChosen()){
             mImageView.setImageResource(R.drawable.button_nohover);
         }
         mButtonChoice.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -59,14 +58,13 @@ public class ChoiceTypeViewHolder extends BaseViewHolder{
             }
         });
 
-        mButtonChoice.setEnabled(museumStoryModels.get(position).getIsShowed());
+        mButtonChoice.setEnabled(heartStoryModels.get(position).getIsShowed());
 
         mButtonChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mChoiceClick.onButtonClick(museumStoryModels.get(position));
+                mChoiceClick.onButtonClick(heartStoryModels.get(position));
             }
         });
-
     }
 }

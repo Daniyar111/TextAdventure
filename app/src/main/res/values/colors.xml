@@ -9,4 +9,7 @@
     <color name="colorGreyDark">#818181</color>
     <color name="colorGreySuperDark">#585757</color>
     <color name="colorGreen">#9afc61</color>
+    <color name="colorGreenDark">#4f7539</color>
+    <color name="colorRed">#f62529</color>
+    <color name="colorRedDark">#912022</color>
 </resources>
