@@ -190,9 +190,7 @@ public class HeartPersonListPresenter implements HeartPersonListContract.Present
 
     @Override
     public RealmResults<HeartPersonModel> getHeartPersonModels() {
-        Log.d("heartdani", "getHeartPersonModels: " + mRealm.where(HeartPersonModel.class).findAll().size());
-        return mRealm.where(HeartPersonModel.class)
-                .findAll();
+        return mRealm.where(HeartPersonModel.class).findAll();
     }
 
     @Override
