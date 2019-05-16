@@ -38,7 +38,7 @@ public class MuseumMainPresenter implements MuseumMainContract.Presenter {
     @Override
     public void readDataCSV() {
         if(mRealm.where(MuseumStoryModel.class).findAll().size() == 0){
-            InputStream inputStream = mResourceManager.getResources().openRawResource(R.raw.data_museum);
+            InputStream inputStream = mResourceManager.getResources().openRawResource(R.raw.data_mus);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
 
             String line = "";

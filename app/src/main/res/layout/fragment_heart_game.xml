@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:id="@+id/personPanel"
+    app:umanoPanelHeight="80sp">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewHeart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:background="@android:color/black"
+        android:paddingTop="@dimen/padding_fifteen"/>
+
+    <include layout="@layout/include_person_panel"/>
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

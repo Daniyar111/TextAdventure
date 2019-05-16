@@ -4,6 +4,15 @@
     <string name="create_person">Создать свой персонаж</string>
     <string name="new_game">Новая игра</string>
     <string name="skip">Пропустить</string>
+    <string name="start_game">Начать игру</string>
+    <string name="release">Простите, данная игра находится в разработке</string>
+    <string name="no_save">У вас нет сохраненной игры</string>
+    <string name="yes_save">Есть сохраненная игра</string>
+    <string-array name="array_books">
+        <item>Ужасы музея</item>
+        <item>Скоро</item>
+        <item>Скоро</item>
+    </string-array>
 
     <string-array name="array_beginning">
         <item>В этом приключении все, как в книгах-играх, но с одним отличием: в нем нет случайности. Выживете вы или умрете — зависит от Ваших решений, а не от броска кубика.</item>

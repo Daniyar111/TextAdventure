@@ -36,7 +36,6 @@ public class ChoiceTypeViewHolder extends BaseViewHolder{
         mResourceManager = resourceManager;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onBindView(final RealmResults<MuseumStoryModel> museumStoryModels, final int position) {
         mTextViewDescription.setText(museumStoryModels.get(position).getDescription());

@@ -56,39 +56,40 @@ public class HeartPersonListAdapter extends BaseAdapter {
         HeartPersonModel personModel = (HeartPersonModel) getItem(i);
         viewHolder.mTextViewName.setText(personModel.getName());
         viewHolder.mImageViewPerson.setImageResource(personModel.getImageId());
-        viewHolder.mTextViewDescription.setText(personModel.getDescription());
-        StringBuilder skills = new StringBuilder();
-        StringBuilder equipments = new StringBuilder();
-        for (int j = 0; j < personModel.getSkills().size(); j++) {
-            for (int k = 0; k < personModel.getSkills().get(j).getEquipments().size(); k++) {
-                equipments.append(personModel.getSkills().get(j).getEquipments().get(k).getName());
-            }
-            skills.append(personModel.getSkills().get(j).getName());
-        }
-        viewHolder.mTextViewSkills.setText(skills);
-
-        viewHolder.mTextViewEquipments.setText(equipments);
-        viewHolder.mTextViewMoney.setText(String.valueOf(personModel.getMoney()));
-        viewHolder.mTextViewHealth.setText(String.valueOf(personModel.getHealth()));
-        viewHolder.mTextViewStatus.setText(String.valueOf(personModel.getStatus()));
+//        viewHolder.mTextViewDescription.setText(personModel.getDescription());
+//        StringBuilder skills = new StringBuilder();
+//        StringBuilder equipments = new StringBuilder();
+//        for (int j = 0; j < personModel.getSkills().size(); j++) {
+//            for (int k = 0; k < personModel.getSkills().get(j).getEquipments().size(); k++) {
+//                equipments.append(personModel.getSkills().get(j).getEquipments().get(k).getName());
+//            }
+//            skills.append(personModel.getSkills().get(j).getName());
+//        }
+//        viewHolder.mTextViewSkills.setText(skills);
+//
+//        viewHolder.mTextViewEquipments.setText(equipments);
+//        viewHolder.mTextViewMoney.setText(String.valueOf(personModel.getMoney()));
+//        viewHolder.mTextViewHealth.setText(String.valueOf(personModel.getHealth()));
+//        viewHolder.mTextViewStatus.setText(String.valueOf(personModel.getStatus()));
 
         return view;
     }
 
     class ViewHolder{
 
-        private TextView mTextViewName, mTextViewDescription, mTextViewSkills, mTextViewEquipments, mTextViewMoney, mTextViewHealth, mTextViewStatus;
+        private TextView mTextViewName;
+//        private TextView mTextViewDescription, mTextViewSkills, mTextViewEquipments, mTextViewMoney, mTextViewHealth, mTextViewStatus;
         private ImageView mImageViewPerson;
 
         ViewHolder(View view){
             mTextViewName = view.findViewById(R.id.textViewName);
             mImageViewPerson = view.findViewById(R.id.imagePerson);
-            mTextViewDescription = view.findViewById(R.id.textViewDescription);
-            mTextViewSkills = view.findViewById(R.id.textViewSkills);
-            mTextViewEquipments = view.findViewById(R.id.textViewEquipments);
-            mTextViewMoney = view.findViewById(R.id.textViewMoney);
-            mTextViewHealth = view.findViewById(R.id.textViewHealth);
-            mTextViewStatus = view.findViewById(R.id.textViewStatus);
+//            mTextViewDescription = view.findViewById(R.id.textViewDescription);
+//            mTextViewSkills = view.findViewById(R.id.textViewSkills);
+//            mTextViewEquipments = view.findViewById(R.id.textViewEquipments);
+//            mTextViewMoney = view.findViewById(R.id.textViewMoney);
+//            mTextViewHealth = view.findViewById(R.id.textViewHealth);
+//            mTextViewStatus = view.findViewById(R.id.textViewStatus);
         }
     }
 }
