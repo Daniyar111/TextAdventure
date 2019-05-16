@@ -81,7 +81,6 @@ public class MuseumMainActivity extends BaseActivity implements MuseumMainContra
             mPresenter.startAgain();
             return;
         }
-
         mPresenter.blockButtons(museumStoryModel);
         mPresenter.handlerLooping(mPresenter.getStoryModels(museumStoryModel.getId()), false);
     }

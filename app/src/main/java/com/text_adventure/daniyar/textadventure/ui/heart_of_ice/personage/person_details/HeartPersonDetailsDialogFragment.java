@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.text_adventure.daniyar.textadventure.R;
 import com.text_adventure.daniyar.textadventure.data.entity.HeartPersonModel;
 import com.text_adventure.daniyar.textadventure.ui.BaseDialogFragment;
+import com.text_adventure.daniyar.textadventure.ui.heart_of_ice.personage.HeartGameStartCallBack;
 
 import io.realm.Realm;
 
@@ -23,6 +24,7 @@ public class HeartPersonDetailsDialogFragment extends BaseDialogFragment impleme
     private TextView mTextViewName, mTextViewDescription, mTextViewSkillFirst, mTextViewSkillSecond, mTextViewSkillThird, mTextViewSkillForth;
     private String mPerson;
     private Button mButtonStart;
+    private HeartGameStartCallBack mCallBack;
 
     @Override
     protected int getViewLayout() {
@@ -80,7 +82,18 @@ public class HeartPersonDetailsDialogFragment extends BaseDialogFragment impleme
 
     @Override
     public void onClick(View view) {
+        mCallBack.onStartClicked();
+        dismiss();
+    }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallBack = (HeartGameStartCallBack) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement HeartGameStartCallBack");
+        }
     }
 
     @Override
